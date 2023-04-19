@@ -1,7 +1,19 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 
 export const Navbar = () => {
+
+  // Obtener la función navigate de React Router
+  const navigate = useNavigate();
+
+  // Función para cerrar sesión
+  const onLogout = () => {
+    // Navegar a la ruta '/login', reemplazando la entrada actual en el historial
+    navigate('/login', {
+      replace: true
+    })
+  }
+
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
       <Link 
@@ -40,7 +52,10 @@ export const Navbar = () => {
           <span className="nav-item nav-link text-primary">
             Juan
           </span>
-          <button className="nav-item nav-link btn">
+          {/* Botón para cerrar sesión */}
+          <button className="nav-item nav-link btn"
+            onClick={onLogout}
+          >
             Logout
           </button>
         </ul>
