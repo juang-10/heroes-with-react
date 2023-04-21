@@ -1,12 +1,13 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { getHeroById } from "../helpers";
+import { useMemo } from "react";
 
 export const HeroPage = () => {
-  // Obtenemos el parámetro id de la URL con el hook useParams
+  // Obtiene el parámetro "id" de la URL mediante el hook "useParams" de React Router
   const { id, ...rest } = useParams();
 
-  // Obtenemos el héroe correspondiente al id
-  const hero = getHeroById(id);
+  // Utiliza el hook useMemo para memorizar el resultado de la función getHeroById(), y se volverá a calcular solo cuando el parámetro "id" cambie.  
+  const hero = useMemo(() => getHeroById(id), [id]);
 
   const navigate = useNavigate();
 
