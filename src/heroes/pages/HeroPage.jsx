@@ -13,11 +13,7 @@ export const HeroPage = () => {
 
 
   const onNavigateBack = () => {
-    if(hero.publisher === 'DC Comics') {
-      navigate('/dc')
-    } else {
-      navigate('/marvel')
-    }
+    navigate(-1);
   }
 
   // Si el héroe no existe, redirigimos al usuario a la página de inicio de Marvel
