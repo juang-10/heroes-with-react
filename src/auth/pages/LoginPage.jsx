@@ -4,13 +4,13 @@ import { useContext } from "react";
 
 export const LoginPage = () => {
 
+  const {login} = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const {login} = useContext(AuthContext);
-
   const onLogin = () => {
+    const lastPath = localStorage.getItem('lastPath') || '/';
     login('Juan Gonzalez')
-    navigate('/', { replace: true });
+    navigate(lastPath, { replace: true });
   }
 
   return (
